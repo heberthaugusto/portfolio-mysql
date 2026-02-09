@@ -9,6 +9,7 @@
 --   - Excludes discontinued products
 --   - Considers only store 1
 --   - SKU formatted with 6 digits
+--   - ALIAS in brazilian portugues
 
 %vars
 $data = {:d:Data do estoque;;}
