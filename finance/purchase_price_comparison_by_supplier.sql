@@ -17,6 +17,10 @@
 --   - Ignores documents with invno <= 1
 --   - Results may include products present in only one of the periods
 --
+-- Technical Note (Portfolio):
+--   The duplicated subqueries for each period are intentional, prioritizing
+--   clarity and explicit business rules over abstraction in ERP reports.
+--
 -- Parameters:
 --   $Vend -> Supplier ID
 --   $P1i  -> Period 1 start date
