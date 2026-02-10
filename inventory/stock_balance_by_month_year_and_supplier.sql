@@ -22,18 +22,17 @@ SELECT
     SUM(stkchk.qtty2) AS Saldo
 FROM
     sqldados.stkchk
-INNER JOIN
-    sqldados.prd
+INNER JOIN sqldados.prd
         ON prd.no = stkchk.prdno
-INNER JOIN
-    sqldados.vend
+INNER JOIN sqldados.vend
         ON vend.no = prd.mfno
 WHERE
     stkchk.ym = DATE_FORMAT([$data], '%Y%m')
     AND stkchk.storeno = 1
     AND vend.no = [$forn]
-    AND (prd.dereg & 4 != 4)
+    AND (prd.dereg & 4) <> 4
 GROUP BY
-    prd.no, prd.name
+    prd.no,
+    prd.name
 ORDER BY
-    Saldo DESC
+    Saldo DESC;
