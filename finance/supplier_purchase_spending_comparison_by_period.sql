@@ -43,61 +43,82 @@ $p2f={:d:P2_Fim}
 SELECT
     LEFT(vend.name,10) AS Fornecedor,
 
-    CONCAT('R$ ', format(SUM(
-        CASE 
-            WHEN inv.date BETWEEN [$p1i] AND [$p1f]
-            THEN invxa.amtdue 
-            ELSE 0 
-        END
-    )/100,2,'de_DE')) AS Periodo1,
+    CONCAT(
+        'R$ ',
+        FORMAT(SUM(
+            CASE 
+                WHEN inv.date BETWEEN [$p1i] AND [$p1f]
+                THEN invxa.amtdue 
+                ELSE 0 
+            END
+        ) / 100, 2, 'de_DE')
+    ) AS Periodo1,
 
-    CONCAT('R$ ', format(SUM(
-        CASE 
-            WHEN inv.date BETWEEN [$p2i] AND [$p2f]
-            THEN invxa.amtdue 
-            ELSE 0 
-        END
-    )/100,2,'de_DE')) AS Periodo2,
+    CONCAT(
+        'R$ ',
+        FORMAT(SUM(
+            CASE 
+                WHEN inv.date BETWEEN [$p2i] AND [$p2f]
+                THEN invxa.amtdue 
+                ELSE 0 
+            END
+        ) / 100, 2, 'de_DE')
+    ) AS Periodo2,
 
     CASE
-        WHEN SUM(CASE WHEN inv.date BETWEEN [$p1i] AND [$p1f] 
-                      THEN invxa.amtdue ELSE 0 END) = 0
+        WHEN SUM(
+            CASE 
+                WHEN inv.date BETWEEN [$p1i] AND [$p1f]
+                THEN invxa.amtdue 
+                ELSE 0 
+            END
+        ) = 0
         THEN 0
         ELSE (
-            SUM(CASE WHEN inv.date BETWEEN [$p2i] AND [$p2f] 
-                     THEN invxa.amtdue ELSE 0 END)
+            SUM(
+                CASE 
+                    WHEN inv.date BETWEEN [$p2i] AND [$p2f]
+                    THEN invxa.amtdue 
+                    ELSE 0 
+                END
+            )
             -
-            SUM(CASE WHEN inv.date BETWEEN [$p1i] AND [$p1f] 
-                     THEN invxa.amtdue ELSE 0 END)
+            SUM(
+                CASE 
+                    WHEN inv.date BETWEEN [$p1i] AND [$p1f]
+                    THEN invxa.amtdue 
+                    ELSE 0 
+                END
+            )
         ) * 100 /
-        SUM(CASE WHEN inv.date BETWEEN [$p1i] AND [$p1f] 
-                 THEN invxa.amtdue ELSE 0 END)
+        SUM(
+            CASE 
+                WHEN inv.date BETWEEN [$p1i] AND [$p1f]
+                THEN invxa.amtdue 
+                ELSE 0 
+            END
+        )
     END AS Diferenca
 
 FROM
     sqldados.invxa
-LEFT JOIN sqldados.inv 
-       ON inv.invno = invxa.invno 
+LEFT JOIN sqldados.inv
+       ON inv.invno   = invxa.invno
       AND inv.storeno = invxa.storeno
-LEFT JOIN sqldados.vend 
+LEFT JOIN sqldados.vend
        ON vend.no = inv.vendno
-LEFT JOIN sqldados.acc 
-       ON acc.no = inv.account
 
 WHERE
     invxa.storeno >= 0
-    AND (
-            vend.no = [$vendno1]
-         OR vend.no = [$vendno2]
-         OR vend.no = [$vendno3]
-        )
+    AND vend.no IN ([$vendno1], [$vendno2], [$vendno3])
     AND (
             inv.date BETWEEN [$p1i] AND [$p1f]
          OR inv.date BETWEEN [$p2i] AND [$p2f]
         )
 
 GROUP BY
-    vend.no, vend.name
+    vend.no,
+    vend.name
 
 ORDER BY
     vend.name;
