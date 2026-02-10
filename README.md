@@ -11,4 +11,4 @@ Portfolio of reports developed in MySQL, focused on corporate environments and E
 - Data aggregation and consolidation
 
 ## Repository Structure
-Each folder contains SQL reports with comments explaining the business logic and query purpose.
+Each folder contains SQL reports with comments and images explaining the business logic and query purpose.
