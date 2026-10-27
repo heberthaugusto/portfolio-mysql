@@ -105,6 +105,8 @@ Cada relatório tem um `.sql` (consulta comentada) e um `.png` (exemplo de saíd
 ![Vendas por canal](vendas/vendas_por_canal_fisica_virtual_e_cursos.png)
 
 ---
+> ⚖️ **Uso do código:** Este repositório é disponibilizado apenas para fins de portfólio e avaliação profissional. Todos os direitos reservados. Não é permitido copiar, modificar, distribuir ou usar o código, no todo ou em parte, para qualquer finalidade, sem autorização por escrito.
+---
 
 ## 👤 Autor
 
