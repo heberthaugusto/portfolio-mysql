@@ -10,7 +10,7 @@
 
 ## 🎯 Sobre o projeto
 
-Em uma operação de varejo o ERP guarda tudo, mas os relatórios padrão raramente respondem às perguntas que a gestão faz. Este repositório reúne consultas que escrevi para responder a essas perguntas direto no banco do ERP, como "quais produtos deste fornecedor ficaram mais caros desde o ano passado", "quanto vence na semana que vem por fornecedor" ou "quais pedidos do site têm cara de chargeback".
+Em uma operação de varejo o ERP guarda tudo, mas os relatórios padrões às vezes não respondem às perguntas que a gestão faz. Este repositório reúne consultas que escrevi para responder a essas perguntas direto no banco do ERP, como "quais produtos deste fornecedor ficaram mais caros desde o ano passado", "quanto vence na semana que vem por fornecedor" ou "quais pedidos do site têm cara de chargeback".
 
 Cada arquivo `.sql` traz um cabeçalho com descrição, objetivo, regras de negócio, parâmetros e colunas de saída, e um `.png` ao lado com um exemplo do resultado.
 
