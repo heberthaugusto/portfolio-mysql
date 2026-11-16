@@ -14,7 +14,7 @@ Em uma operação de varejo o ERP guarda tudo, mas os relatórios padrões às v
 
 Cada arquivo `.sql` traz um cabeçalho com descrição, objetivo, regras de negócio, parâmetros e colunas de saída, e um `.png` ao lado com um exemplo do resultado.
 
-> ℹ️ Os prints de exemplo foram gerados com **dados fictícios** (fornecedores, clientes, produtos e valores inventados), preservando apenas o formato do relatório. As consultas são as mesmas usadas em produção.
+> ℹ️ Os prints de exemplo foram gerados com **dados fictícios** (fornecedores, clientes, produtos e valores inventados), preservando apenas o formato do relatório.
 
 ---
 
